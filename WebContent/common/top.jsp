@@ -10,8 +10,8 @@
 <body>
 <div>
 <p style="position: fixed; right: 0px; left: auto;">
-<a href="/view/loginForm.jsp">[로그인]</a>
-<a href="/view/joinForm.jsp">[회원가입]</a>
+<a href="loginForm.jsp">[로그인]</a>
+<a href="joinForm.jsp">[회원가입]</a>
 </div>
 </p>
 </body>
