@@ -54,7 +54,7 @@ public class DBCPInitListener implements ServletContextListener {
 		try {
 			String jdbcUrl = prop.getProperty("jdbcUrl");
 			String username = prop.getProperty("dbUser");
-			String pw = prop.getProperty("dbPass");
+			String pw = prop.getProperty("dbPassword");
 
 			ConnectionFactory connFactory = 
 					new DriverManagerConnectionFactory(jdbcUrl, username, pw);
