@@ -5,6 +5,21 @@
 		http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 
+
+	<context-param>
+		<param-name>poolConfig</param-name>
+		<param-value>
+			jdbcdriver=com.mysql.cj.jdbc.Driver
+			jdbcUrl=jdbc:mysql://localhost:3306/board_dev1?serverTimezone=UTC
+			dbUser=dev1
+			dbPassword=dev1
+			validationQuery=select 1
+			minIdle=3
+			maxTotal=30
+			poolName=board_dev1
+		</param-value>
+	</context-param>
+	
 	<servlet>
 		<servlet-name>ControllerUsingURI</servlet-name>
 		<servlet-class>mvc.controller.ControllerUsingURI</servlet-class>
@@ -21,19 +36,5 @@
 		<servlet-name>ControllerUsingURI</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-
-	<context-param>
-		<param-name>poolConfig</param-name>
-		<param-value>
-			jdbcdriver=com.mysql.cj.jdbc.Driver
-			jdbcUrl=jdbc:mysql://localhost:3306/board_dev1?serverTimezone=UTC
-			dbUser=dev1
-			dbPassword=dev1
-			validationQuery=select 1
-			minIdle=3
-			maxTotal=30
-			poolName=board_dev1
-		</param-value>
-	</context-param>
 	
 </web-app>
