@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 
+import jdbc.ConnectionProvider;
 import jdbc.JdbcUtil;
-import jdbc.connection.ConnectionProvider;
 import member.dao.MemberDao;
 import member.model.Member;
 
@@ -16,7 +16,7 @@ public class JoinService {
 	public void join(JoinRequest joinReq) {
 		Connection conn =null;
 		try {
-			conn =ConnectionProvider.getConnection();
+			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
 			Member member =memberDao.selectById(conn, joinReq.getId());

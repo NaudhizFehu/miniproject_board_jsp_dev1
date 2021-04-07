@@ -3,8 +3,8 @@ package member.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import jdbc.ConnectionProvider;
 import jdbc.JdbcUtil;
-import jdbc.connection.ConnectionProvider;
 import member.dao.MemberDao;
 import member.model.Member;
 
