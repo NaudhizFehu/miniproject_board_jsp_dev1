@@ -22,6 +22,20 @@
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 	<context-param>
 		<param-name>poolConfig</param-name>
 		<param-value>
@@ -35,5 +49,20 @@
 			poolName=board_dev1
 		</param-value>
 	</context-param>
+
+	<filter>
+		<filter-name>LoginCheckFilter</filter-name>
+		<filter-class>filter.LoginCheckFilter</filter-class>
+	</filter>	
+	<filter-mapping>
+		<filter-name>LoginCheckFilter</filter-name>
+		<url-pattern>/myInfo.do</url-pattern>
+		<url-pattern>/changePw.do</url-pattern>
+		<url-pattern>/changeEmail.do</url-pattern>
+		<url-pattern>/changePhoneNumber.do</url-pattern>
+		<url-pattern>/write.do</url-pattern>
+		<url-pattern>/modify.do</url-pattern>
+		<url-pattern>/delete.do</url-pattern>
+	</filter-mapping>
 	
 </web-app>
