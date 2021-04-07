@@ -10,8 +10,9 @@
 <body>
 <div>
 <p style="position: fixed; right: 0px; left: auto;">
-<a href="loginForm.jsp">[로그인]</a>
-<a href="join.do">[회원가입]</a>
+${ctxPath = pageContext.request.contextPath; ''}
+<a href="${ctxPath}/login.do">[로그인]</a>
+<a href="${ctxPath}/join.do">[회원가입]</a>
 </div>
 </p>
 </body>

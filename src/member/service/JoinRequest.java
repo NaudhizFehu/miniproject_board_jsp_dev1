@@ -115,20 +115,27 @@ public class JoinRequest {
 	// 암호 양식이 아닌경우(6~20자)
 	private void checkPassword(Map<String, Boolean> errors, String value, String errorName) {
 
-		if (!(value.length() >= 6 && value.length() <= 20)) {
+		if (value == null || value.isEmpty())
+			return;
+
+		if (value.length() < 6 || value.length() > 20) {
 			errors.put(errorName, Boolean.TRUE);
 		}
 	}
 
 	// 이메일 양식이 아닌경우
 	private void checkEmail(Map<String, Boolean> errors, String value, String errorName) {
+
+		if (value == null || value.isEmpty())
+			return;
+
 		// 정규표현식 패턴문자열(이메일형식)
 		String regex = "\\w+@\\w+\\.\\w+(\\.\\w+)?";
 
 		// 정규식에 매치
 		boolean result = Pattern.matches(regex, value);
 
-		if (!result) {
+		if (result == false) {
 			errors.put(errorName, Boolean.TRUE);
 		}
 	}
@@ -136,6 +143,11 @@ public class JoinRequest {
 	// 전화번호 양식이 아닌경우
 	private void checkPhoneNumber(Map<String, Boolean> errors, String value1, String value2, String value3,
 			String errorName) {
+
+		if (value1 == null || value1.isEmpty() || value2 == null || value2.isEmpty() || value3 == null
+				|| value3.isEmpty())
+			return;
+
 		// 정규표현식 패턴문자열(휴대폰번호)
 		String regex = "^(010|011|016|017|018|019)[-\\s]?\\d{3,4}[-\\s]?\\d{4}$";
 
