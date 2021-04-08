@@ -29,8 +29,8 @@ public class DeleteArticleService {
 					if(content == null) {
 							throw new ArticleContentNotFoundException();
 					}
-					articleDao.delete(conn, article.getNumber());
 					contentDao.delete(conn, article.getNumber());
+					articleDao.delete(conn, article.getNumber());
 					conn.commit();
 			} catch (SQLException e) {
 				JdbcUtil.rollback(conn);

@@ -20,7 +20,7 @@ public class DeleteArticleHandler implements CommandHandler{
 		
 		try {
 				deleteService.delete(articleNum);
-				return "/WEB-INF/view/deleteSuccess.jsp";
+				return "/WEB-INF/view/deleteArticleSuccess.jsp";
 		} catch (ArticleNotFoundException e) {
 				res.sendError(HttpServletResponse.SC_NOT_FOUND);
 				return null;
