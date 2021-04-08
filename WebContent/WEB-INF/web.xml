@@ -61,9 +61,9 @@
 		<url-pattern>/changePw.do</url-pattern>
 		<url-pattern>/changeEmail.do</url-pattern>
 		<url-pattern>/changePhoneNumber.do</url-pattern>
-		<url-pattern>/write.do</url-pattern>
-		<url-pattern>/modify.do</url-pattern>
-		<url-pattern>/delete.do</url-pattern>
+		<url-pattern>/article/write.do</url-pattern>
+		<url-pattern>/article/modify.do</url-pattern>
+		<url-pattern>/article/delete.do</url-pattern>
 	</filter-mapping>
 	
 </web-app>
