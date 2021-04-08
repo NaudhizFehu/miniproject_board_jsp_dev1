@@ -14,7 +14,7 @@ import mvc.command.CommandHandler;
 
 public class ChangePasswordHandler implements CommandHandler{
 
-	private static final String FORM_VIEW="/WEB-INF/view/changePwdForm.jsp";
+	private static final String FORM_VIEW="/WEB-INF/view/changePwForm.jsp";
 	private ChangePasswordService changePwdSvc = new ChangePasswordService();
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res)
@@ -53,7 +53,7 @@ public class ChangePasswordHandler implements CommandHandler{
 		try {
 			changePwdSvc.changePassword(user.getId(), 
 					curPwd, newPwd);
-			return "/WEB-INF/view/changePwdSuccess.jsp";
+			return "/WEB-INF/view/changePwSuccess.jsp";
 		} catch (InvalidPasswordException e) {
 			errors.put("badCurPwd", Boolean.TRUE);
 			return FORM_VIEW;

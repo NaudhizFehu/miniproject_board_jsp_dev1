@@ -44,15 +44,12 @@ public class ChangePhoneNumberHandler implements CommandHandler {
 		String newPhoneNumber2 = req.getParameter("newPhoneNumber2");
 		String newPhoneNumber3 = req.getParameter("newPhoneNumber3");
 		
-		if (newPhoneNumber1 == null || newPhoneNumber1.isEmpty()) {
+		if (newPhoneNumber1 == null || newPhoneNumber1.isEmpty() ||
+				newPhoneNumber2 == null || newPhoneNumber2.isEmpty() ||
+				newPhoneNumber3 == null || newPhoneNumber3.isEmpty()) {
 			errors.put("blankNewPhoneNumber", Boolean.TRUE);
 		}
-		if (newPhoneNumber2 == null || newPhoneNumber2.isEmpty()) {
-			errors.put("blankNewPhoneNumber", Boolean.TRUE);
-		}
-		if (newPhoneNumber3 == null || newPhoneNumber3.isEmpty()) {
-			errors.put("blankNewPhoneNumber", Boolean.TRUE);
-		}		
+		
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
 		}
