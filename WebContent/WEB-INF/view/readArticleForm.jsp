@@ -13,24 +13,24 @@ ${ctxPath = pageContext.request.contextPath;''}
 <table border="1" width="100%">
 <tr>
 	<td>글 번호</td>
-	<td>1</td>
+	<td>${articleData.article.number}</td>
 </tr>
 <tr>
 	<td>작성자</td>
-	<td>닉네임</td>
+	<td>${articleData.article.writer.name}</td>
 </tr>
 <tr>
 	<td>글 제목</td>
-	<td>제모오오오옥</td>
+	<td>${articleData.article.title}</td>
 </tr>
 <tr>
 	<td>글 내용</td>
-	<td>내요오오오오옹</td>
+	<td>${articleData.content}</td>
 </tr>
 <tr>
-	<td colspan="2"><a href="${ctxPath}/list.do">[목록보기]</a>&emsp;
-	<a href="${ctxPath}/modify.do">[글 수정하기]</a>&emsp;
-	<a href="${ctxPath}/delete.do">[글 삭제하기]</a>
+	<td colspan="2"><a href="${ctxPath}/article/list.do">[목록보기]</a>&emsp;
+	<a href="${ctxPath}/article/modify.do">[글 수정하기]</a>&emsp;
+	<a href="${ctxPath}/article/delete.do">[글 삭제하기]</a>
 	</td>
 </tr>
 </table>
