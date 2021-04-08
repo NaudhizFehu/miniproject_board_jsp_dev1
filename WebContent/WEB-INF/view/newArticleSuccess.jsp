@@ -7,7 +7,7 @@
 <title>새글 작성 완료</title>
 </head>
 <body>
-	새 글 작성을 완료했습니다.
+	글이 성공적으로 작성 되었습니다.
 	<br> ${ctxPath = pageContext.request.contextPath ; ''}
 	<a href="${ctxPath}/article/list.do"><input type="button"
 		value="게시글 목록 보기"></a>
