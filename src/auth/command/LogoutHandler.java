@@ -15,7 +15,7 @@ public class LogoutHandler implements CommandHandler {
 		if(session != null) {
 			session.invalidate();
 		}
-		res.sendRedirect(req.getContextPath()+"/list.do");
+		res.sendRedirect(req.getContextPath()+"/article/list.do");
 		return null;
 	}
 

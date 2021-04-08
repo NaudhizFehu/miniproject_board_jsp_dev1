@@ -53,7 +53,7 @@ public class LoginHandler implements CommandHandler {
 			req.getSession().setAttribute("authUser", user);
 			System.out.println("임시로 리스트로 전송");
 			//시간이 여유가 될시 이전화면으로 다시 되돌아가도록 변경
-			res.sendRedirect(req.getContextPath() + "/list.do");
+			res.sendRedirect(req.getContextPath() + "/article/list.do");
 			return null;
 		} catch (LoginFailException e) {
 			errors.put("idOrPwNotMatch", Boolean.TRUE);

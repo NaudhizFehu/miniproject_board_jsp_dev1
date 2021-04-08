@@ -14,6 +14,6 @@
 ${param.name}님 회원가입이 완료되셨습니다.
 <!-- ctxPath : contextPath경로를 가진 변수 -->
 ${ctxPath = pageContext.request.contextPath; ''}
-<a href="${ctxPath}/list.do">[메인화면으로 돌아가기]</a>
+<a href="${ctxPath}/article/list.do">[메인화면으로 돌아가기]</a>
 </body>
 </html>
