@@ -21,7 +21,8 @@
 <textarea name="content" rows="5" cols="30">${modReq.content}</textarea>
 </p>
 <input type="submit" value="글 수정">
-<a href="article/list.do"><input type="button" value="취소"></a>
+${ctxPath = pageContext.request.contextPath ; ''}
+<a href="${ctxPath}/article/list.do"><input type="button" value="취소"></a>
 </form>
 </body>
 </html>

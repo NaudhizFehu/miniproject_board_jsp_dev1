@@ -16,7 +16,8 @@
 내용:<br><textarea name="content" rows="5" cols="30" value="${param.content}"></textarea>
 </p>
 <input type="submit" value="새 글 등록">
-<a href="article/list.do"><input type="button" value="취소"></a>
+${ctxPath = pageContext.request.contextPath ; ''}
+<a href="${ctxPath}/article/list.do"><input type="button" value="취소"></a>
 </form>
 </body>
 </html>
