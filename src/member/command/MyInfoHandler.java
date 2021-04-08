@@ -15,14 +15,14 @@ import mvc.command.CommandHandler;
 
 public class MyInfoHandler implements  CommandHandler{
 
-	private static final String FORM_VIEW="/WEB-INF/view/MyInfoForm.jsp";
+	private static final String FORM_VIEW="/WEB-INF/view/myInfoForm.jsp";
 	private MyInfoService MyInfoService = new MyInfoService();
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		User user = (User)req.getSession().getAttribute("authUser");
-		MyInfoService.MyInfo(user.getId());
-		req.setAttribute("user",user);
+		Member member = MyInfoService.MyInfo(user.getId());
+		req.setAttribute("user",member);
 		return FORM_VIEW;
 	}
 	

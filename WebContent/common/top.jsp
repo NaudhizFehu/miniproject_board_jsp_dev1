@@ -14,7 +14,7 @@
 ${ctxPath = pageContext.request.contextPath; ''}
 <u:isLogin>
 	<a href="${ctxPath}/myInfo.do">[내 정보 보기]</a>
-	<a href="${ctxPath}/Logout.do">[로그아웃]</a>
+	<a href="${ctxPath}/logout.do">[로그아웃]</a>
 </u:isLogin>
 <u:notLogin>
 	<a href="${ctxPath}/login.do">[로그인]</a>

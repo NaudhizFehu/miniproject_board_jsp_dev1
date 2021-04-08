@@ -19,7 +19,10 @@
 <p>이름 : <input type="text" name="name" value="${param.name}"></p>
 <c:if test="${errors.blankName}">이름을 입력해주세요.</c:if>
 <p>암호 : <input type="password" name="password"></p>
-<c:if test="${errors.blankPassword}">암호를 입력해주세요.</c:if>
+<c:choose>
+<c:when test="${errors.blankPassword}">암호를 입력해주세요.</c:when>
+<c:when test="${errors.notPassword}">비밀번호는 6~20자 사이로 입력해주세요.</c:when>
+</c:choose>
 <p>암호 확인 : <input type="password" name="confirmPassword"></p>
 <c:choose>
 <c:when test="${errors.blankConfirmPassword}">확인암호를 입력해주세요.</c:when>
@@ -35,7 +38,7 @@
 <c:when test="${errors.blankPhoneNumber}">전화번호를 입력해 주세요.</c:when>
 <c:when test="${errors.notPhoneNumber}">전화번호 양식에 맞지 않습니다. 다시 입력해주세요.</c:when>
 </c:choose>
-<input type="submit" value="회원가입">
+<p><input type="submit" value="회원가입"></p>
 </form>
 </body>
 </html>

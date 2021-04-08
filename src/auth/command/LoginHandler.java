@@ -36,15 +36,13 @@ public class LoginHandler implements CommandHandler {
 		String id = trim(req.getParameter("id"));
 		String password = trim(req.getParameter("password"));
 
-		System.out.println("id : " + id + " | password : " + password);
-		
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
 
 		if (id == null || id.isEmpty())
-			errors.put("id", Boolean.TRUE);
+			errors.put("blankId", Boolean.TRUE);
 		if (password == null || password.isEmpty())
-			errors.put("password", Boolean.TRUE);
+			errors.put("blankPassword", Boolean.TRUE);
 
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
@@ -53,8 +51,8 @@ public class LoginHandler implements CommandHandler {
 		try {
 			User user = loginService.login(id, password);
 			req.getSession().setAttribute("authUser", user);
-			System.out.println("ÀÓ½Ã·Î ¸®½ºÆ®·Î Àü¼Û");
-			//½Ã°£ÀÌ ¿©À¯°¡ µÉ½Ã ÀÌÀüÈ­¸éÀ¸·Î ´Ù½Ã µÇµ¹¾Æ°¡µµ·Ï º¯°æ
+			System.out.println("ì„ì‹œë¡œ ë¦¬ìŠ¤íŠ¸ë¡œ ì „ì†¡");
+			//ì‹œê°„ì´ ì—¬ìœ ê°€ ë ì‹œ ì´ì „í™”ë©´ìœ¼ë¡œ ë‹¤ì‹œ ë˜ëŒì•„ê°€ë„ë¡ ë³€ê²½
 			res.sendRedirect(req.getContextPath() + "/list.do");
 			return null;
 		} catch (LoginFailException e) {
