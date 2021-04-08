@@ -58,7 +58,6 @@ public class ArticleContentDao {
 		}
 	}
 	
-	// 삭제
 	public void delete(Connection conn, int no) throws SQLException {
 		try (PreparedStatement pstmt = 
 				conn.prepareStatement(
