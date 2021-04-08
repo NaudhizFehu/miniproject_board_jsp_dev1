@@ -1,0 +1,10 @@
+/article/
+<<<<<<< HEAD
+/filter/
+/mvc/
+/auth/
+/jdbc/
+=======
+/auth/
+>>>>>>> ljh
+/member/
