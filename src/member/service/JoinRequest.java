@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-//È¸¿ø°¡ÀÔ Á¤º¸±âÀÔ ¹× °ªÀÌ ºñ¾îÀÖ´ÂÁö È®ÀÎ
+//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 public class JoinRequest {
 
 	private String id;
@@ -48,7 +48,7 @@ public class JoinRequest {
 		this.confirmPassword = confirmPassword;
 	}
 
-	// ¾ÕÀü¿¡ Ä£ ÆĞ½º¿öµå ¸Â´ÂÁö È®ÀÎÇÏ´Â ¸Ş¼­µå
+	// ë¹„ë°€ë²ˆí˜¸ì™€ í™•ì¸ ë¹„ë¹Œë²ˆí˜¸ì˜ ë‚´ìš©ì´ ê°™ì€ì§€ ê²€ì‚¬ 
 	public boolean isPasswordEqualToConfirm() {
 		return password != null && password.equals(confirmPassword);
 	}
@@ -85,7 +85,7 @@ public class JoinRequest {
 		this.phoneNumber3 = phoneNumber3;
 	}
 
-	// È¸¿ø°¡ÀÔ ½Ã ±âÀÔÇØ¾ßÇÏ´Â °ªµéÀÌ Á¦´ë·Î ´Ù Ã¤¿öÁ® ÀÖ´ÂÁö È®ÀÎ °ªÀÌ ºñ¾îÀÖ´Â °ÍÀÌ ÀÖ´Ù¸é ¿¡·¯¹ß»ı
+	// ì •ë³´ì…ë ¥êµ¬ê°„ì˜ ì˜¤ë¥˜ê²€ì‚¬
 	public void validate(Map<String, Boolean> errors) {
 		checkEmpty(errors, id, "blankId");
 		checkEmpty(errors, name, "blankName");
@@ -106,46 +106,58 @@ public class JoinRequest {
 		}
 	}
 
-	// È¸¿ø°¡ÀÔÇÒ ¶§ ÇÊ¿äÇÑ °ªÀÌ ºñ¾îÀÖ´ÂÁö È®ÀÎÇÏ´Â ¸Ş¼­µå
+	// ì…ë ¥ë‚´ìš©ì¤‘ ë¹ˆê³µê°„ì´ ìˆëŠ”ì§€ ê²€ì‚¬
 	private void checkEmpty(Map<String, Boolean> errors, String value, String filedName) {
 		if (value == null || value.isEmpty())
 			errors.put(filedName, Boolean.TRUE);
 	}
 
-	// ¾ÏÈ£ ¾ç½ÄÀÌ ¾Æ´Ñ°æ¿ì(6~20ÀÚ)
+	// ë¹„ë°€ë²ˆí˜¸ ì–‘ì‹ ê²€ì‚¬(6~20ì)
 	private void checkPassword(Map<String, Boolean> errors, String value, String errorName) {
 
-		if (!(value.length() >= 6 && value.length() <= 20)) {
+		if (value == null || value.isEmpty())
+			return;
+
+		if (value.length() < 6 || value.length() > 20) {
 			errors.put(errorName, Boolean.TRUE);
 		}
 	}
 
-	// ÀÌ¸ŞÀÏ ¾ç½ÄÀÌ ¾Æ´Ñ°æ¿ì
+	// ì´ë©”ì¼ ì–‘ì‹ ê²€ì‚¬
 	private void checkEmail(Map<String, Boolean> errors, String value, String errorName) {
-		// Á¤±ÔÇ¥Çö½Ä ÆĞÅÏ¹®ÀÚ¿­(ÀÌ¸ŞÀÏÇü½Ä)
+
+		if (value == null || value.isEmpty())
+			return;
+
+		// ì •ê·œì‹ - ì´ë©”ì¼ ì–‘ì‹(êµ¬ì¡°)ê²€ì‚¬(ìœ íš¨í•œ ì´ë©”ì¼ì¸ì§€ëŠ” ê²€ì‚¬í•˜ì§€ ì•ŠìŒ)
 		String regex = "\\w+@\\w+\\.\\w+(\\.\\w+)?";
 
-		// Á¤±Ô½Ä¿¡ ¸ÅÄ¡
+		// ì–‘ì‹ì— ë§ëŠ”ì§€ ê²€ì‚¬
 		boolean result = Pattern.matches(regex, value);
 
-		if (!result) {
+		if (result == false) {
 			errors.put(errorName, Boolean.TRUE);
 		}
 	}
 
-	// ÀüÈ­¹øÈ£ ¾ç½ÄÀÌ ¾Æ´Ñ°æ¿ì
+	// ì „í™”ë²ˆí˜¸ ì–‘ì‹ ê²€ì‚¬
 	private void checkPhoneNumber(Map<String, Boolean> errors, String value1, String value2, String value3,
 			String errorName) {
-		// Á¤±ÔÇ¥Çö½Ä ÆĞÅÏ¹®ÀÚ¿­(ÈŞ´ëÆù¹øÈ£)
+
+		if (value1 == null || value1.isEmpty() || value2 == null || value2.isEmpty() || value3 == null
+				|| value3.isEmpty())
+			return;
+
+		// ì •ê·œì‹ - ì „í™”ë²ˆí˜¸ ì–‘ì‹ ê²€ì‚¬(íœ´ëŒ€ì „í™” ê¸°ì¤€ìœ¼ë¡œ ì‘ì„±)
 		String regex = "^(010|011|016|017|018|019)[-\\s]?\\d{3,4}[-\\s]?\\d{4}$";
 
-		// ÀüÈ­¹øÈ£
+		// ê²€ì‚¬í•  valueê°’ì„ í•˜ë‚˜ë¡œ í•©ì¹¨
 		String phone = value1 + "-" + value2 + "-" + value3;
 
-		// Á¤±Ô½Ä¿¡ ¸ÅÄ¡
+		// ì–‘ì‹ì— ë§ëŠ”ì§€ ê²€ì‚¬
 		boolean result = Pattern.matches(regex, phone);
 
-		if (!result) {
+		if (result == false) {
 			errors.put(errorName, Boolean.TRUE);
 		}
 	}

@@ -79,6 +79,6 @@ public class Member {
 	}
 
 	public void changePhoneNumber3(String newPhoneNumber3) {
-		this.phoneNumber2 = newPhoneNumber3;
+		this.phoneNumber3 = newPhoneNumber3;
 	}
 }

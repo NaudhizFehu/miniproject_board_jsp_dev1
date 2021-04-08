@@ -33,15 +33,21 @@ public class JoinHandler implements CommandHandler {
 	}
 
 	private String processForm(HttpServletRequest req, HttpServletResponse res) {
+		System.out.println("Get Form");
 		return FORM_VIEW;
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
+		System.out.println("Post Form");
 		JoinRequest joinReq = new JoinRequest();
 		joinReq.setId(req.getParameter("id"));
 		joinReq.setName(req.getParameter("name"));
 		joinReq.setPassword(req.getParameter("password"));
 		joinReq.setConfirmPassword(req.getParameter("confirmPassword"));
+		joinReq.setEmail(req.getParameter("email"));
+		joinReq.setPhoneNumber1(req.getParameter("phoneNumber1"));
+		joinReq.setPhoneNumber2(req.getParameter("phoneNumber2"));
+		joinReq.setPhoneNumber3(req.getParameter("phoneNumber3"));
 
 		Map<String, Boolean> errors = new HashMap<String, Boolean>();
 		req.setAttribute("errors", errors);
@@ -49,9 +55,11 @@ public class JoinHandler implements CommandHandler {
 		joinReq.validate(errors);
 
 		if (!errors.isEmpty()) {
+			System.out.println("Error");
 			return FORM_VIEW;
 		}
 		try {
+			System.out.println("joinService »£√‚");
 			joinService.join(joinReq);
 			return "/WEB-INF/view/joinSuccess.jsp";
 		} catch (DuplicationException e) {

@@ -6,7 +6,7 @@
 <title>게시글 목록 보기</title>
 </head>
 <body>
-<jsp:include page="../common/top.jsp"></jsp:include>
+<jsp:include page="../../common/top.jsp"></jsp:include>
 <table border="3">
 	<tr>
 		<td colspan="5"><a href="write.do">[게시글쓰기]</a></td>

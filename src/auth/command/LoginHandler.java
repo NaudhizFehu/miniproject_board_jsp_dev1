@@ -40,9 +40,9 @@ public class LoginHandler implements CommandHandler {
 		req.setAttribute("errors", errors);
 
 		if (id == null || id.isEmpty())
-			errors.put("id", Boolean.TRUE);
+			errors.put("blankId", Boolean.TRUE);
 		if (password == null || password.isEmpty())
-			errors.put("password", Boolean.TRUE);
+			errors.put("blankPassword", Boolean.TRUE);
 
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
@@ -51,7 +51,9 @@ public class LoginHandler implements CommandHandler {
 		try {
 			User user = loginService.login(id, password);
 			req.getSession().setAttribute("authUser", user);
-			res.sendRedirect(req.getContextPath() + "/index.jsp");
+			System.out.println("임시로 리스트로 전송");
+			//시간이 여유가 될시 이전화면으로 다시 되돌아가도록 변경
+			res.sendRedirect(req.getContextPath() + "/list.do");
 			return null;
 		} catch (LoginFailException e) {
 			errors.put("idOrPwNotMatch", Boolean.TRUE);

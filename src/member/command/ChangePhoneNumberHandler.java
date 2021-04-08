@@ -2,6 +2,7 @@ package member.command;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,15 +45,14 @@ public class ChangePhoneNumberHandler implements CommandHandler {
 		String newPhoneNumber2 = req.getParameter("newPhoneNumber2");
 		String newPhoneNumber3 = req.getParameter("newPhoneNumber3");
 		
-		if (newPhoneNumber1 == null || newPhoneNumber1.isEmpty()) {
+		if (newPhoneNumber1 == null || newPhoneNumber1.isEmpty() ||
+				newPhoneNumber2 == null || newPhoneNumber2.isEmpty() ||
+				newPhoneNumber3 == null || newPhoneNumber3.isEmpty()) {
 			errors.put("blankNewPhoneNumber", Boolean.TRUE);
 		}
-		if (newPhoneNumber2 == null || newPhoneNumber2.isEmpty()) {
-			errors.put("blankNewPhoneNumber", Boolean.TRUE);
-		}
-		if (newPhoneNumber3 == null || newPhoneNumber3.isEmpty()) {
-			errors.put("blankNewPhoneNumber", Boolean.TRUE);
-		}		
+		
+		checkPhoneNumber(errors, newPhoneNumber1, newPhoneNumber2, newPhoneNumber3, "notPhoneNumber");
+		
 		if (!errors.isEmpty()) {
 			return FORM_VIEW;
 		}
@@ -67,4 +67,25 @@ public class ChangePhoneNumberHandler implements CommandHandler {
 		}
 	}
 
+	// 전화번호 양식체크
+		private void checkPhoneNumber(Map<String, Boolean> errors, String value1, String value2, String value3,
+				String errorName) {
+
+			if (value1 == null || value1.isEmpty() || value2 == null || value2.isEmpty() || value3 == null
+					|| value3.isEmpty())
+				return;
+
+			// 전화번호 검사용 정규식
+			String regex = "^(010|011|016|017|018|019)[-\\s]?\\d{3,4}[-\\s]?\\d{4}$";
+
+			// 전화번호 양식 검사를 위한 value합침
+			String phone = value1 + "-" + value2 + "-" + value3;
+
+			// 결과값(true|false)
+			boolean result = Pattern.matches(regex, phone);
+
+			if (!result) {
+				errors.put(errorName, Boolean.TRUE);
+			}
+		}
 }
