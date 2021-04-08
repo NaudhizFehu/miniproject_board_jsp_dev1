@@ -40,4 +40,8 @@ public class Article {
 		public int getReadCount() {
 			return readCount;
 		}
+
+		public String getTitle() {
+			return title;
+		}
 }
