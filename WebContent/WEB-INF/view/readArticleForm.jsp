@@ -29,7 +29,7 @@ ${ctxPath = pageContext.request.contextPath;''}
 </tr>
 <tr>
 	<td colspan="2"><a href="list.do">[목록보기]</a>&emsp;
-	<c:if test="${authUser.id == articleData.article.writer.name}">
+	<c:if test="${authUser.id == articleData.article.writer.id}">
 	<a href="modify.do?no=${articleData.article.number}">[글 수정하기]</a>&emsp;
 	<a href="delete.do">[글 삭제하기]</a>
 	</c:if>
