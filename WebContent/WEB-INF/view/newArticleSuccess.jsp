@@ -11,7 +11,7 @@
 	<br> ${ctxPath = pageContext.request.contextPath ; ''}
 	<a href="${ctxPath}/article/list.do"><input type="button"
 		value="게시글 목록 보기"></a>
-	<a href="${ctxPath}/article/read.do?no=${modReq.articleNumber}"><input
+	<a href="${ctxPath}/article/read.do?no=${newArticleNo}"><input
 		type="button" value="게시글 내용 보기"></a>
 </body>
 </html>
